@@ -997,6 +997,76 @@ export namespace flyteidl {
             public static verify(message: { [k: string]: any }): (string|null);
         }
 
+        /** Properties of an ArrayNode. */
+        interface IArrayNode {
+
+            /** ArrayNode taskReference */
+            taskReference?: (flyteidl.core.IIdentifier|null);
+
+            /** ArrayNode concurrency */
+            concurrency?: (Long|null);
+
+            /** ArrayNode size */
+            size?: (Long|null);
+
+            /** ArrayNode minSuccessRatio */
+            minSuccessRatio?: (number|null);
+        }
+
+        /** Represents an ArrayNode. */
+        class ArrayNode implements IArrayNode {
+
+            /**
+             * Constructs a new ArrayNode.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: flyteidl.core.IArrayNode);
+
+            /** ArrayNode taskReference. */
+            public taskReference?: (flyteidl.core.IIdentifier|null);
+
+            /** ArrayNode concurrency. */
+            public concurrency: Long;
+
+            /** ArrayNode size. */
+            public size: Long;
+
+            /** ArrayNode minSuccessRatio. */
+            public minSuccessRatio: number;
+
+            /**
+             * Creates a new ArrayNode instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ArrayNode instance
+             */
+            public static create(properties?: flyteidl.core.IArrayNode): flyteidl.core.ArrayNode;
+
+            /**
+             * Encodes the specified ArrayNode message. Does not implicitly {@link flyteidl.core.ArrayNode.verify|verify} messages.
+             * @param message ArrayNode message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: flyteidl.core.IArrayNode, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an ArrayNode message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ArrayNode
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): flyteidl.core.ArrayNode;
+
+            /**
+             * Verifies an ArrayNode message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+        }
+
         /** Properties of a NodeMetadata. */
         interface INodeMetadata {
 
@@ -1154,6 +1224,9 @@ export namespace flyteidl {
 
             /** Node branchNode */
             branchNode?: (flyteidl.core.IBranchNode|null);
+
+            /** Node arrayNode */
+            arrayNode?: (flyteidl.core.IArrayNode|null);
         }
 
         /** Represents a Node. */
@@ -1189,8 +1262,11 @@ export namespace flyteidl {
             /** Node branchNode. */
             public branchNode?: (flyteidl.core.IBranchNode|null);
 
+            /** Node arrayNode. */
+            public arrayNode?: (flyteidl.core.IArrayNode|null);
+
             /** Node target. */
-            public target?: ("taskNode"|"workflowNode"|"branchNode");
+            public target?: ("taskNode"|"workflowNode"|"branchNode"|"arrayNode");
 
             /**
              * Creates a new Node instance using the specified properties.
